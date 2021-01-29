@@ -19,13 +19,14 @@ class PyTest(TestCommand):
 
 
 setup(name='pythf',
-      version='1.0.0',
+      version='1.0.1',
       author='Group-IB THF',
       author_email='tds@group-ib.com',
       license='MIT',
       description='Group-IB THF REST API Python Bindings',
       packages=find_packages(exclude=['tests']),
       include_package_data=True,
+      py_modules=['pythf', 'client', 'const', 'error'],
       install_requires=[
           'requests'
       ],
