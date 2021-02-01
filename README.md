@@ -1,6 +1,6 @@
 # Python bindings for Group-IB THF REST API
 
-**Latest Version: 1.0.2**
+**Latest Version: 1.0.3**
 
 ## Description
 
@@ -9,7 +9,7 @@ Group-IB THF Polygon is a Malware Detonation & Research platform designed for de
 
 You can use this library with
 
- * [Group-IB THF Cloud](https://www.huntbox.group-ib.com) — our Cloud hosted instance
+ * [Group-IB THF Cloud](https://huntbox.group-ib.com) — our Cloud hosted instance
  * [On-premise installations of Group-IB THF](https://www.group-ib.com/threat-hunting-framework.html) — for even more power and privacy
 
  ## License
