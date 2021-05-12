@@ -1,11 +1,11 @@
 import os
 
-from client import Client
-from const import THF_API_KEY, THF_API_URL, THF_VERIFY_SSL, \
+from .client import Client
+from .const import THF_API_KEY, THF_API_URL, THF_VERIFY_SSL, \
     THF_CONNECTION_TIMEOUT, THF_PROXIES, THF_CONNECTION_RETRIES, \
-    THF_USER_AGENT, DEFAULTS, __version__
-from const import Language, Resolution, OpSystem, Capacity, Status
-from error import ApiError, ObjectNotFoundError
+    THF_USER_AGENT, DEFAULTS
+from .const import Language, Resolution, OpSystem, Capacity, Status
+from .error import ApiError, ObjectNotFoundError
 
 
 class Polygon:

@@ -1,5 +1,5 @@
-from client import Client
-from const import Url
+from pythf.client import Client
+from pythf.const import Url
 
 
 FAKE_API_TOKEN = "FAKE_TOKEN"

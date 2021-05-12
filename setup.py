@@ -29,7 +29,7 @@ setup(name='pythf',
       url="https://github.com/Group-IB/pythf",
       packages=find_packages(exclude=['tests']),
       include_package_data=True,
-      py_modules=['pythf', 'client', 'const', 'error'],
+      py_modules=['pythf'],
       install_requires=[
           'requests'
       ],
