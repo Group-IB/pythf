@@ -62,7 +62,7 @@ class Polygon:
         """
         return self.client.ping()
 
-    def upload_file(self, file_obj, file_name="undefined.txt", password="",
+    def upload_file(self, file_obj, file_name=None, password="",
                           language=Language.EN, mp=False,
                           timeout=180, resolution=Resolution.r1280x1024,
                           op_system=OpSystem.WIN_10, capacity=Capacity.x64):
@@ -84,6 +84,12 @@ class Polygon:
             
             Returns an 'Analysis' object
         """
+        if not file_name:
+            try:
+                file_name = file_obj.name
+            except:
+                file_name = "undefined.txt"
+
         return FileAnalysis(
             file_obj=file_obj,
             file_name=file_name,
