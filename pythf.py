@@ -87,7 +87,7 @@ class Polygon:
         if not file_name:
             try:
                 file_name = file_obj.name
-            except:
+            except AttributeError:
                 file_name = "undefined.txt"
 
         return FileAnalysis(
