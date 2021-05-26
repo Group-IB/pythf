@@ -130,7 +130,7 @@ class Client:
         )
         return self._get_fid(resp)
 
-    def upload_link(self, file_name, file_obj, password, language, mp,
+    def upload_link(self, link, password, language, mp,
                         av, dns, vm_route, clock, priotiry, human,
                         wl, arguments, fsmtp, no_validation, extract_strings,
                         internet, timeout, resolution, op_system, capacity):
