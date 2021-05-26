@@ -89,7 +89,7 @@ class EnableInternet:
 
 
 class Url:
-    API = "api/v2.0/"
+    API = "api/"
 
     ANALGIN_UPLOAD = API + "analgin/upload/"
 

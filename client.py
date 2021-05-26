@@ -103,12 +103,12 @@ class Client:
                         wl, arguments, fsmtp, no_validation, extract_strings,
                         internet, timeout, resolution, op_system, capacity):
         data = {
-            "lang": language,
+            "language": language,
             "password": password,
             "mp": mp,
             "av": av,
             "dns": dns,
-            "vm_route": vm_route,
+            "route": vm_route,
             "clock": clock,
             "priority": priority,
             "human": human,
@@ -131,17 +131,17 @@ class Client:
         return self._get_fid(resp)
 
     def upload_link(self, link, password, language, mp,
-                        av, dns, vm_route, clock, priotiry, human,
+                        av, dns, vm_route, clock, priority, human,
                         wl, arguments, fsmtp, no_validation, extract_strings,
                         internet, timeout, resolution, op_system, capacity):
         data = {
             "link": link,
-            "lang": language,
+            "language": language,
             "password": password,
             "mp": mp,
             "av": av,
             "dns": dns,
-            "vm_route": vm_route,
+            "route": vm_route,
             "clock": clock,
             "priority": priority,
             "human": human,
