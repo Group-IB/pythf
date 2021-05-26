@@ -99,11 +99,25 @@ class Client:
         return "OK"
 
     def upload_file(self, file_name, file_obj, password, language, mp,
-                          timeout, resolution, op_system, capacity):
+                        av, dns, vm_route, clock, priority, human,
+                        wl, arguments, fsmtp, no_validation, extract_strings,
+                        internet, timeout, resolution, op_system, capacity):
         data = {
-            "language": language,
+            "lang": language,
             "password": password,
             "mp": mp,
+            "av": av,
+            "dns": dns,
+            "vm_route": vm_route,
+            "clock": clock,
+            "priority": priority,
+            "human": human,
+            "wl": wl,
+            "fsmtp": fsmtp,
+            "no_validation": no_validation,
+            "extract_strings": extract_strings,
+            "internet": internet,
+            "arguments": arguments,
             "timeout": timeout,
             "resolution": resolution,
             "tags": [op_system, capacity]
@@ -116,13 +130,27 @@ class Client:
         )
         return self._get_fid(resp)
 
-    def upload_link(self, link, password, language, mp, timeout, \
-                          resolution, op_system, capacity):
+    def upload_link(self, file_name, file_obj, password, language, mp,
+                        av, dns, vm_route, clock, priotiry, human,
+                        wl, arguments, fsmtp, no_validation, extract_strings,
+                        internet, timeout, resolution, op_system, capacity):
         data = {
             "link": link,
-            "language": language,
+            "lang": language,
             "password": password,
             "mp": mp,
+            "av": av,
+            "dns": dns,
+            "vm_route": vm_route,
+            "clock": clock,
+            "priority": priority,
+            "human": human,
+            "wl": wl,
+            "fsmtp": fsmtp,
+            "no_validation": no_validation,
+            "extract_strings": extract_strings,
+            "internet": internet,
+            "arguments": arguments,
             "timeout": timeout,
             "resolution": resolution,
             "tags": [op_system, capacity]

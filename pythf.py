@@ -4,7 +4,9 @@ from client import Client
 from const import THF_API_KEY, THF_API_URL, THF_VERIFY_SSL, \
     THF_CONNECTION_TIMEOUT, THF_PROXIES, THF_CONNECTION_RETRIES, \
     THF_USER_AGENT, DEFAULTS, __version__
-from const import Language, Resolution, OpSystem, Capacity, Status
+from const import Language, Resolution, OpSystem, Capacity, Status, Antivirus, \
+    VmRoute, HumanEmulation, WhiteList, EnableSMTP, NoValidation, ExtractStrings, \
+        EnableInternet
 from error import ApiError, ObjectNotFoundError
 
 
@@ -63,24 +65,40 @@ class Polygon:
         return self.client.ping()
 
     def upload_file(self, file_obj, file_name="undefined.txt", password="",
-                          language=Language.EN, mp=False,
+                          language=Language.EN, mp=False, av=Antivirus.off,
+                          dns="", vm_route=VmRoute.VPN, clock="", priority=0,
+                          human=HumanEmulation.off, wl=WhiteList.off, arguments="",
+                          fsmtp=EnableSMTP.off, no_validation=NoValidation.off,
+                          extract_strings=ExtractStrings.off, internet=EnableInternet.off,
                           timeout=180, resolution=Resolution.r1280x1024,
                           op_system=OpSystem.WIN_10, capacity=Capacity.x64):
         """
             Detonate file in THF Polygon.
 
             Parameters:
-                file_obj:     The sample to detonate. Must be a file-like object
-                              e.g. open('foo.bar') or BytesIO instance
-                file_name:    The file name
-                password:     The archive password
-                language:     The report language (EN, RU)
-                mp:           Try to use the MITM (Man in the middle) attack
-                              while the detonation
-                timeout:      Detonation timeout
-                resolution:   The screen resolution
-                op_system:    The system of VM (Windows XP, 7, 10)
-                capacity:     VM capacity (x86 or x64)
+                file_obj:           The sample to detonate. Must be a file-like object
+                                    e.g. open('foo.bar') or BytesIO instance
+                file_name:          The file name
+                password:           The archive password
+                language:           The report language (EN, RU)
+                mp:                 Try to use the MITM (Man in the middle) attack
+                                    while the detonation
+                av:                 Enables or disables antivirus on VM (0, 1)
+                dns:                Custom dns-server
+                vm_route:           Exit route for VM (mgmt, vpn)
+                clock:              The time set on VM (ex. "2021-03-05 12:22:26")
+                priority:           Task priority
+                human:              Active emulation of user actions (0, 1)
+                wl:                 Using whitelists to exclude trusted programs from the startup list (0, 1)
+                arguments:          Program launch arguments
+                fsmtp:              Enables SMTP server emulation to intercept sent emails (0, 1)
+                no_validation:      Disables automatic validation of the analysis (0, 1)
+                extract_strings:    Extract all strings from samples (0, 1)
+                internet:           Disables or enables internet on VM (0, 1)
+                timeout:            Detonation timeout
+                resolution:         The screen resolution
+                op_system:          The system of VM (Windows XP, 7, 10)
+                capacity:           VM capacity (x86 or x64)
             
             Returns an 'Analysis' object
         """
@@ -91,28 +109,56 @@ class Polygon:
             password=password,
             language=language,
             mp=mp,
+            av=av,
+            dns=dns,
+            vm_route=vm_route,
+            clock=clock,
+            priority=priority,
+            human=human,
+            wl=wl,
+            arguments=arguments,
+            fsmtp=fsmtp,
+            no_validation=no_validation,
+            extract_strings=extract_strings,
+            internet=internet,
             timeout=timeout,
             resolution=resolution,
             op_system=op_system,
             capacity=capacity
         )
     
-    def upload_url(self, url, password="", language=Language.EN, mp=False,
-                         timeout=180, resolution=Resolution.r1280x1024,
-                         op_system=OpSystem.WIN_10, capacity=Capacity.x64):
+    def upload_url(self, url, password="", language=Language.EN, mp=False, av=Antivirus.off,
+                            dns="", vm_route=VmRoute.VPN, clock="", priority=0,
+                            human=HumanEmulation.off, wl=WhiteList.off, arguments="",
+                            fsmtp=EnableSMTP.off, no_validation=NoValidation.off,
+                            extract_strings=ExtractStrings.off, internet=EnableInternet.off,
+                            timeout=180, resolution=Resolution.r1280x1024,
+                            op_system=OpSystem.WIN_10, capacity=Capacity.x64):
         """
             Detonate URL in THF Polygon.
 
             Parameters:
-                url:          The URL to detonate
-                password:     The archive password
-                language:     The report language (EN, RU)
-                mp:           Try to use the MITM (Man in the middle) attack
-                              while the detonation
-                timeout:      Detonation timeout
-                resolution:   The screen resolution
-                op_system:    The system of VM (Windows XP, 7, 10)
-                capacity:     VM capacity (x86 or x64)
+                url:                The URL to detonate
+                password:           The archive password
+                language:           The report language (EN, RU)
+                mp:                 Try to use the MITM (Man in the middle) attack
+                                    while the detonation
+                av:                 Enables or disables antivirus on VM (0, 1)
+                dns:                Custom dns-server
+                vm_route:           Exit route for VM (mgmt, vpn)
+                clock:              The time set on VM (ex. "2021-03-05 12:22:26")
+                priority:           Task priority
+                human:              Active emulation of user actions (0, 1)
+                wl:                 Using whitelists to exclude trusted programs from the startup list (0, 1)
+                arguments:          Program launch arguments
+                fsmtp:              Enables SMTP server emulation to intercept sent emails (0, 1)
+                no_validation:      Disables automatic validation of the analysis (0, 1)
+                extract_strings:    Extract all strings from samples (0, 1)
+                internet:           Disables or enables internet on VM (0, 1)
+                timeout:            Detonation timeout
+                resolution:         The screen resolution
+                op_system:          The system of VM (Windows XP, 7, 10)
+                capacity:           VM capacity (x86 or x64)
             
             Returns an 'Analysis' object
         """
@@ -122,6 +168,18 @@ class Polygon:
             password=password,
             language=language,
             mp=mp,
+            av=av,
+            dns=dns,
+            vm_route=vm_route,
+            clock=clock,
+            priority=priority,
+            human=human,
+            wl=wl,
+            arguments=arguments,
+            fsmtp=fsmtp,
+            no_validation=no_validation,
+            extract_strings=extract_strings,
+            internet=internet,
             timeout=timeout,
             resolution=resolution,
             op_system=op_system,
@@ -149,7 +207,9 @@ class Polygon:
 
 class Analysis:
     def __init__(self, client, password, language, mp, timeout,
-                       resolution, op_system, capacity):
+                        av, dns, vm_route, clock, priority, human,
+                        wl, arguments, fsmtp, no_validation, extract_strings,
+                        internet, resolution, op_system, capacity):
         """
             Create an Analysis object.
         """
@@ -158,6 +218,18 @@ class Analysis:
         self.password = password
         self.language = language
         self.mp = mp
+        self.av = av
+        self.dns = dns
+        self.vm_route = vm_route
+        self.clock = clock
+        self.priority = priority
+        self.human = human
+        self.wl = wl
+        self.arguments = arguments
+        self.fsmtp = fsmtp
+        self.no_validation = no_validation
+        self.extract_strings = extract_strings
+        self.internet = internet
         self.timeout = timeout
         self.resolution = resolution
         self.op_system = op_system
@@ -289,6 +361,18 @@ class FileAnalysis(Analysis):
             password=self.password,
             language=self.language,
             mp=self.mp,
+            av=self.av,
+            dns=self.dns,
+            vm_route=self.vm_route,
+            clock=self.clock,
+            priority=self.priority,
+            human=self.human,
+            wl=self.wl,
+            arguments=self.arguments,
+            fsmtp=self.fsmtp,
+            no_validation=self.no_validation,
+            extract_strings=self.extract_strings,
+            internet=self.internet,
             timeout=self.timeout,
             resolution=self.resolution,
             op_system=self.op_system,
@@ -337,6 +421,18 @@ class LinkAnalysis(Analysis):
             password=self.password,
             language=self.language,
             mp=self.mp,
+            av=self.av,
+            dns=self.dns,
+            vm_route=self.vm_route,
+            clock=self.clock,
+            priority=self.priority,
+            human=self.human,
+            wl=self.wl,
+            arguments=self.arguments,
+            fsmtp=self.fsmtp,
+            no_validation=self.no_validation,
+            extract_strings=self.extract_strings,
+            internet=self.internet,
             timeout=self.timeout,
             resolution=self.resolution,
             op_system=self.op_system,
