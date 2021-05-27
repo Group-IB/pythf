@@ -64,7 +64,7 @@ class Polygon:
         """
         return self.client.ping()
 
-    def upload_file(self, file_obj, file_name="undefined.txt", password="",
+    def upload_file(self, file_obj, file_name="undefined.txt", context_file=None, password="",
                           language=Language.EN, mp=False, av=Antivirus.off,
                           dns="", vm_route=VmRoute.VPN, clock="", priority=0,
                           human=HumanEmulation.off, wl=WhiteList.off, arguments="",
@@ -79,6 +79,8 @@ class Polygon:
                 file_obj:           The sample to detonate. Must be a file-like object
                                     e.g. open('foo.bar') or BytesIO instance
                 file_name:          The file name
+                context_file:       Text file which can contain passwords for sample. Must be a file-like object
+                                    e.g. open('pswd.txt') or BytesIO instance
                 password:           The archive password
                 language:           The report language (EN, RU)
                 mp:                 Try to use the MITM (Man in the middle) attack
@@ -105,6 +107,7 @@ class Polygon:
         return FileAnalysis(
             file_obj=file_obj,
             file_name=file_name,
+            context_file=context_file,
             client=self.client,
             password=password,
             language=language,
@@ -127,7 +130,7 @@ class Polygon:
             capacity=capacity
         )
     
-    def upload_url(self, url, password="", language=Language.EN, mp=False, av=Antivirus.off,
+    def upload_url(self, url, context_file=None, password="", language=Language.EN, mp=False, av=Antivirus.off,
                             dns="", vm_route=VmRoute.VPN, clock="", priority=0,
                             human=HumanEmulation.off, wl=WhiteList.off, arguments="",
                             fsmtp=EnableSMTP.off, no_validation=NoValidation.off,
@@ -139,6 +142,8 @@ class Polygon:
 
             Parameters:
                 url:                The URL to detonate
+                context_file:       Text file in bytes which can contain passwords for sample. Must be a file-like object
+                                    e.g. open('pswd.txt') or BytesIO instance
                 password:           The archive password
                 language:           The report language (EN, RU)
                 mp:                 Try to use the MITM (Man in the middle) attack
@@ -164,6 +169,7 @@ class Polygon:
         """
         return LinkAnalysis(
             url=url,
+            context_file=context_file,
             client=self.client,
             password=password,
             language=language,
@@ -206,7 +212,7 @@ class Polygon:
 
 
 class Analysis:
-    def __init__(self, client, password, language, mp, timeout,
+    def __init__(self, client, context_file, password, language, mp, timeout,
                         av, dns, vm_route, clock, priority, human,
                         wl, arguments, fsmtp, no_validation, extract_strings,
                         internet, resolution, op_system, capacity):
@@ -215,6 +221,7 @@ class Analysis:
         """
         self.id = None
         self.client = client
+        self.context_file = context_file
         self.password = password
         self.language = language
         self.mp = mp
@@ -370,6 +377,7 @@ class FileAnalysis(Analysis):
         self.id = self.client.upload_file(
             file_name=self.file_name,
             file_obj=self.file_obj,
+            context_file=self.context_file,
             password=self.password,
             language=self.language,
             mp=self.mp,
@@ -430,6 +438,7 @@ class LinkAnalysis(Analysis):
     def _run(self):
         self.id = self.client.upload_link(
             link=self.url,
+            context_file=self.context_file,
             password=self.password,
             language=self.language,
             mp=self.mp,

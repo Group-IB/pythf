@@ -98,12 +98,13 @@ class Client:
         self._http_request(Method.GET, Url.ATTACHES)
         return "OK"
 
-    def upload_file(self, file_name, file_obj, password, language, mp,
+    def upload_file(self, file_name, file_obj, context_file, password, language, mp,
                         av, dns, vm_route, clock, priority, human,
                         wl, arguments, fsmtp, no_validation, extract_strings,
                         internet, timeout, resolution, op_system, capacity):
         data = {
             "language": language,
+            "context_file": context_file,
             "password": password,
             "mp": mp,
             "av": av,
@@ -130,13 +131,14 @@ class Client:
         )
         return self._get_fid(resp)
 
-    def upload_link(self, link, password, language, mp,
+    def upload_link(self, link, context_file, password, language, mp,
                         av, dns, vm_route, clock, priority, human,
                         wl, arguments, fsmtp, no_validation, extract_strings,
                         internet, timeout, resolution, op_system, capacity):
         data = {
             "link": link,
             "language": language,
+            "context_file": context_file,
             "password": password,
             "mp": mp,
             "av": av,
