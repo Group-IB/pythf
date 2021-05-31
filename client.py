@@ -101,7 +101,7 @@ class Client:
     def upload_file(self, file_name, file_obj, password, language, mp,
                         timeout, resolution, op_system, capacity, context_file,
                         av, dns, vm_route, clock, priority, human, internet,
-                        wl, arguments, fsmtp, no_validation, extract_strings)
+                        wl, arguments, fsmtp, no_validation, extract_strings):
         data = {
             "language": language,
             "context_file": context_file,
@@ -134,7 +134,7 @@ class Client:
     def upload_link(self, link, password, language, mp, timeout,
                         resolution, op_system, capacity, context_file,
                         av, dns, vm_route, clock, priority, human, internet,
-                        wl, arguments, fsmtp, no_validation, extract_strings)
+                        wl, arguments, fsmtp, no_validation, extract_strings):
         data = {
             "link": link,
             "language": language,
