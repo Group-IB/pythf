@@ -64,14 +64,14 @@ class Polygon:
         """
         return self.client.ping()
 
-    def upload_file(self, file_obj, file_name="undefined.txt", password="",
-                          language=Language.EN, mp=False, timeout=180, 
-                          resolution=Resolution.r1280x1024, op_system=OpSystem.WIN_10,
-                          capacity=Capacity.x64, context_file=None, av=Antivirus.off,
-                          dns="", vm_route=VmRoute.VPN, clock="", priority=0,
-                          human=HumanEmulation.off, wl=WhiteList.off, arguments="",
-                          fsmtp=EnableSMTP.off, no_validation=NoValidation.off,
-                          extract_strings=ExtractStrings.off, internet=EnableInternet.off):
+    def upload_file(self, file_obj, file_name=None, password=None,
+                          language=None, mp=None, timeout=None, 
+                          resolution=None, op_system=None,
+                          capacity=None, context_file=None, av=None,
+                          dns=None, vm_route=None, clock=None, priority=None,
+                          human=None, wl=None, arguments=None,
+                          fsmtp=None, no_validation=None,
+                          extract_strings=None, internet=None):
         """
             Detonate file in THF Polygon.
 
@@ -104,6 +104,12 @@ class Polygon:
             
             Returns an 'Analysis' object
         """
+        if not file_name:
+            try:
+                file_name = file_obj.name
+            except AttributeError:
+                file_name = "undefined.txt"
+
         return FileAnalysis(
             file_obj=file_obj,
             file_name=file_name,
@@ -130,14 +136,14 @@ class Polygon:
             capacity=capacity
         )
     
-    def upload_url(self, url, password="", language=Language.EN, mp=False, 
-                            timeout=180, resolution=Resolution.r1280x1024,
-                            op_system=OpSystem.WIN_10, capacity=Capacity.x64,
-                            context_file=None, av=Antivirus.off, dns="",
-                            vm_route=VmRoute.VPN, clock="", priority=0,
-                            human=HumanEmulation.off, wl=WhiteList.off, arguments="",
-                            fsmtp=EnableSMTP.off, no_validation=NoValidation.off,
-                            extract_strings=ExtractStrings.off, internet=EnableInternet.off):
+    def upload_url(self, url, password=None, language=None, mp=None, 
+                            timeout=None, resolution=None,
+                            op_system=None, capacity=None,
+                            context_file=None, av=None, dns=None,
+                            vm_route=None, clock=None, priority=None,
+                            human=None, wl=None, arguments=None,
+                            fsmtp=None, no_validation=None,
+                            extract_strings=None, internet=None):
         """
             Detonate URL in THF Polygon.
 

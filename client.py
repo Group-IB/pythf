@@ -120,14 +120,17 @@ class Client:
             "internet": internet,
             "arguments": arguments,
             "timeout": timeout,
-            "resolution": resolution,
-            "tags": [op_system, capacity]
+            "resolution": resolution
         }
+        filtered_data = {k: v for k, v in data.items() if v is not None}
+        if op_system is not None and capacity is not None:
+            filtered_data["tags"] = [op_system, capacity]
+
         resp = self._http_request(
             method=Method.POST,
             url_suffix=Url.ANALGIN_UPLOAD,
             files={'files': (file_name, file_obj)},
-            data=data
+            data=filtered_data
         )
         return self._get_fid(resp)
 
@@ -157,10 +160,14 @@ class Client:
             "resolution": resolution,
             "tags": [op_system, capacity]
         }
+        filtered_data = {k: v for k, v in data.items() if v is not None}
+        if op_system is not None and capacity is not None:
+            filtered_data["tags"] = [op_system, capacity]
+
         resp = self._http_request(
             method=Method.POST,
             url_suffix=Url.ANALGIN_UPLOAD,
-            data=data
+            data=filtered_data
         )
         return self._get_fid(resp)
 
