@@ -64,14 +64,14 @@ class Polygon:
         """
         return self.client.ping()
 
-    def upload_file(self, file_obj, file_name="undefined.txt", context_file=None, password="",
-                          language=Language.EN, mp=False, av=Antivirus.off,
+    def upload_file(self, file_obj, file_name="undefined.txt", password="",
+                          language=Language.EN, mp=False, timeout=180, 
+                          resolution=Resolution.r1280x1024, op_system=OpSystem.WIN_10,
+                          capacity=Capacity.x64, context_file=None, av=Antivirus.off,
                           dns="", vm_route=VmRoute.VPN, clock="", priority=0,
                           human=HumanEmulation.off, wl=WhiteList.off, arguments="",
                           fsmtp=EnableSMTP.off, no_validation=NoValidation.off,
-                          extract_strings=ExtractStrings.off, internet=EnableInternet.off,
-                          timeout=180, resolution=Resolution.r1280x1024,
-                          op_system=OpSystem.WIN_10, capacity=Capacity.x64):
+                          extract_strings=ExtractStrings.off, internet=EnableInternet.off):
         """
             Detonate file in THF Polygon.
 
@@ -130,13 +130,14 @@ class Polygon:
             capacity=capacity
         )
     
-    def upload_url(self, url, context_file=None, password="", language=Language.EN, mp=False, av=Antivirus.off,
-                            dns="", vm_route=VmRoute.VPN, clock="", priority=0,
+    def upload_url(self, url, password="", language=Language.EN, mp=False, 
+                            timeout=180, resolution=Resolution.r1280x1024,
+                            op_system=OpSystem.WIN_10, capacity=Capacity.x64,
+                            context_file=None, av=Antivirus.off, dns="",
+                            vm_route=VmRoute.VPN, clock="", priority=0,
                             human=HumanEmulation.off, wl=WhiteList.off, arguments="",
                             fsmtp=EnableSMTP.off, no_validation=NoValidation.off,
-                            extract_strings=ExtractStrings.off, internet=EnableInternet.off,
-                            timeout=180, resolution=Resolution.r1280x1024,
-                            op_system=OpSystem.WIN_10, capacity=Capacity.x64):
+                            extract_strings=ExtractStrings.off, internet=EnableInternet.off):
         """
             Detonate URL in THF Polygon.
 
