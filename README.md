@@ -44,7 +44,7 @@ In order to perform any queries via the API, you will need to get the API token 
 from pythf import Polygon
 
 polygon = Polygon("MY_API_KEY")
-analysis = polygon.upload_file(open("sample.exe"))
+analysis = polygon.upload_file(open("sample.exe", "rb"))
 ```
 2. If you want to detonate some URL, use the next method:
 ```
