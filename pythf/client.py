@@ -2,8 +2,8 @@ import os
 import requests
 from urllib.parse import urljoin
 
-from const import Url, Method
-from error import ApiError, ClientError, ServerError, AuthenticationError, \
+from .const import Url, Method
+from .error import ApiError, ClientError, ServerError, AuthenticationError, \
     ServerIsBeingUpdatedError, BadRequestError, BadResponseError, \
     ObjectNotFoundError, ConnectionError
 
