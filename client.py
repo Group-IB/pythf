@@ -100,8 +100,9 @@ class Client:
 
     def filter_data(data):
         filtered_data = {k: v for k, v in data.items() if v is not None}
-        if None not in data["tags"]:
-            filtered_data["tags"] = data["tags"]
+        tags = list(filter(lambda x: x is not None, data["tags"]))
+        if tags:
+            filtered_data["tags"] = tags
         return filtered_data
 
     def upload_file(self, file_name, file_obj, password, language, mp,
