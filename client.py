@@ -98,39 +98,80 @@ class Client:
         self._http_request(Method.GET, Url.ATTACHES)
         return "OK"
 
+    def filter_data(data):
+        filtered_data = {k: v for k, v in data.items() if v is not None}
+        tags = list(filter(lambda x: x is not None, data["tags"]))
+        if tags:
+            filtered_data["tags"] = tags
+        return filtered_data
+
     def upload_file(self, file_name, file_obj, password, language, mp,
-                          timeout, resolution, op_system, capacity):
+                        timeout, resolution, op_system, capacity, context_file,
+                        av, dns, vm_route, clock, priority, human, internet,
+                        wl, arguments, fsmtp, no_validation, extract_strings):
         data = {
             "language": language,
+            "context_file": context_file,
             "password": password,
             "mp": mp,
+            "av": av,
+            "dns": dns,
+            "route": vm_route,
+            "clock": clock,
+            "priority": priority,
+            "human": human,
+            "wl": wl,
+            "fsmtp": fsmtp,
+            "no_validation": no_validation,
+            "extract_strings": extract_strings,
+            "internet": internet,
+            "arguments": arguments,
             "timeout": timeout,
             "resolution": resolution,
             "tags": [op_system, capacity]
         }
+        filtered_data = self.filter_data(data)
+
         resp = self._http_request(
             method=Method.POST,
             url_suffix=Url.ANALGIN_UPLOAD,
             files={'files': (file_name, file_obj)},
-            data=data
+            data=filtered_data
         )
         return self._get_fid(resp)
 
-    def upload_link(self, link, password, language, mp, timeout, \
-                          resolution, op_system, capacity):
+    def upload_link(self, link, password, language, mp, timeout,
+                        resolution, op_system, capacity, context_file,
+                        av, dns, vm_route, clock, priority, human, internet,
+                        wl, arguments, fsmtp, no_validation, extract_strings):
         data = {
             "link": link,
             "language": language,
+            "context_file": context_file,
             "password": password,
             "mp": mp,
+            "av": av,
+            "dns": dns,
+            "route": vm_route,
+            "clock": clock,
+            "priority": priority,
+            "human": human,
+            "wl": wl,
+            "fsmtp": fsmtp,
+            "no_validation": no_validation,
+            "extract_strings": extract_strings,
+            "internet": internet,
+            "arguments": arguments,
             "timeout": timeout,
             "resolution": resolution,
             "tags": [op_system, capacity]
         }
+        filtered_data = self.filter_data(data)
+
         resp = self._http_request(
             method=Method.POST,
             url_suffix=Url.ANALGIN_UPLOAD,
-            data=data
+            data=filtered_data
         )
         return self._get_fid(resp)
 
