@@ -48,46 +48,6 @@ class Capacity:
     x64 = "x64"
 
 
-class Antivirus:
-    on = 1
-    off = 0
-
-
-class VmRoute:
-    MGMT = "mgmt"
-    VPN = "vpn"
-
-
-class HumanEmulation:
-    on = 1
-    off = 0
-
-
-class WhiteList:
-    on = 1
-    off = 0
-
-
-class EnableSMTP:
-    on = 1
-    off = 0
-
-
-class NoValidation:
-    on = 1
-    off = 0
-
-
-class ExtractStrings:
-    on = 1
-    off = 0
-
-
-class EnableInternet:
-    on = 1
-    off = 0
-
-
 class Url:
     API = "api/"
 

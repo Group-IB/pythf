@@ -98,6 +98,12 @@ class Client:
         self._http_request(Method.GET, Url.ATTACHES)
         return "OK"
 
+    def filter_data(data):
+        filtered_data = {k: v for k, v in data.items() if v is not None}
+        if None not in data["tags"]:
+            filtered_data["tags"] = data["tags"]
+        return filtered_data
+
     def upload_file(self, file_name, file_obj, password, language, mp,
                         timeout, resolution, op_system, capacity, context_file,
                         av, dns, vm_route, clock, priority, human, internet,
@@ -120,11 +126,10 @@ class Client:
             "internet": internet,
             "arguments": arguments,
             "timeout": timeout,
-            "resolution": resolution
+            "resolution": resolution,
+            "tags": [op_system, capacity]
         }
-        filtered_data = {k: v for k, v in data.items() if v is not None}
-        if op_system is not None and capacity is not None:
-            filtered_data["tags"] = [op_system, capacity]
+        filtered_data = self.filter_data(data)
 
         resp = self._http_request(
             method=Method.POST,
@@ -160,9 +165,7 @@ class Client:
             "resolution": resolution,
             "tags": [op_system, capacity]
         }
-        filtered_data = {k: v for k, v in data.items() if v is not None}
-        if op_system is not None and capacity is not None:
-            filtered_data["tags"] = [op_system, capacity]
+        filtered_data = self.filter_data(data)
 
         resp = self._http_request(
             method=Method.POST,
