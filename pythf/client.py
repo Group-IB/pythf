@@ -98,7 +98,7 @@ class Client:
         self._http_request(Method.GET, Url.ATTACHES)
         return "OK"
 
-    def filter_data(data):
+    def filter_data(self, data):
         filtered_data = {k: v for k, v in data.items() if v is not None}
         tags = list(filter(lambda x: x is not None, data["tags"]))
         if tags:
