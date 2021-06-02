@@ -18,7 +18,8 @@ ATTACH_ANSWER = {
         "previous": None,
         "results": [
             {
-                "file_url": "/media/attach/manual/3e9e/3e9eecec9964cb43bcf38900cf3860f70eb0fb1c7887958f234b0e4c45a0abd7_yxYNH9I.url",
+                "file_url": "/media/attach/manual/3e9e/3e9eecec9964cb43bcf38900cf3860f70eb0fb1c7887958f234b0e4c45a0abd7_yxYNH9I.\
+                    url",
                 "analgin_result": {
                     "error": None,
                     "commit": "403a4300e5939d1d7fbfb90958aac5b413468ba3",
@@ -127,7 +128,7 @@ HASH_REPUTATION_ANSWER = {
         "verdict": False,
         "score": 6.3,
         "malware_families": []
-    }    
+    }
 }
 
 
@@ -135,8 +136,7 @@ class MockedClient(Client):
     def __init__(self):
         pass
 
-    def _http_request(self, method, url_suffix, params=None,
-                            data=None, files=None, decode=True):
+    def _http_request(self, method, url_suffix, params=None, data=None, files=None, decode=True):
         FILE_INFO = ATTACH_ANSWER["data"]["results"][0]
         if url_suffix == Url.ANALGIN_UPLOAD:
             return ANALGIN_UPLOAD_ANSWER
