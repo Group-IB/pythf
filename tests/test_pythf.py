@@ -1,6 +1,6 @@
 from io import BytesIO
 from unittest import TestCase
-from pythf.pythf import Polygon
+from pythf import Polygon
 from tests.utils import MockedClient, FAKE_API_TOKEN, MALICIOUS_URL, \
     ANALYSIS_ID, SHORT_INFO, REPORT, EXPORTED_REPORT, EXPORTED_PCAP, \
     EXPORTED_VIDEO, HASH_TYPE, HASH, HASH_REPUTATION
