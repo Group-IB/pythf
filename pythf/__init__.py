@@ -1,1 +1,0 @@
-from .pythf import Polygon
