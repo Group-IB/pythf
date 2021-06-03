@@ -18,7 +18,7 @@ You can use this library with
 
  ## Requirements
 
- * python 3.5 or higher
+ * python 3.6 or higher
 
 ## Getting Started
 
