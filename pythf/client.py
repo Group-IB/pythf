@@ -1,4 +1,3 @@
-import os
 import requests
 from urllib.parse import urljoin
 
@@ -7,9 +6,9 @@ from .error import ApiError, ClientError, ServerError, AuthenticationError, \
     ServerIsBeingUpdatedError, BadRequestError, BadResponseError, \
     ObjectNotFoundError, ConnectionError
 
+
 class Client:
-    def __init__(self, api_key, base_url, verify_ssl, timeout,
-                       proxies, retries, user_agent):
+    def __init__(self, api_key, base_url, verify_ssl, timeout, proxies, retries, user_agent):
         self.api_key = api_key
         self.base_url = base_url
         self.verify_ssl = verify_ssl
@@ -49,8 +48,7 @@ class Client:
                 raise BadResponseError(**kwargs)
         return resp.content
 
-    def _http_request(self, method, url_suffix, params=None,
-                            data=None, files=None, decode=True):
+    def _http_request(self, method, url_suffix, params=None, data=None, files=None, decode=True):
         url = urljoin(self.base_url, url_suffix)
         retries = 0
         while True:
@@ -105,10 +103,8 @@ class Client:
             filtered_data["tags"] = tags
         return filtered_data
 
-    def upload_file(self, file_name, file_obj, password, language, mp,
-                        timeout, resolution, op_system, capacity, context_file,
-                        av, dns, vm_route, clock, priority, human, internet,
-                        wl, arguments, fsmtp, no_validation, extract_strings):
+    def upload_file(self, file_name, file_obj, password, language, mp, timeout, resolution, op_system, capacity, context_file,
+                    av, dns, vm_route, clock, priority, human, internet, wl, arguments, fsmtp, no_validation, extract_strings):
         data = {
             "language": language,
             "context_file": context_file,
@@ -140,10 +136,8 @@ class Client:
         )
         return self._get_fid(resp)
 
-    def upload_link(self, link, password, language, mp, timeout,
-                        resolution, op_system, capacity, context_file,
-                        av, dns, vm_route, clock, priority, human, internet,
-                        wl, arguments, fsmtp, no_validation, extract_strings):
+    def upload_link(self, link, password, language, mp, timeout, resolution, op_system, capacity, context_file,
+                    av, dns, vm_route, clock, priority, human, internet, wl, arguments, fsmtp, no_validation, extract_strings):
         data = {
             "link": link,
             "language": language,

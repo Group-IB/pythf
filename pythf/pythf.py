@@ -3,15 +3,13 @@ import os
 from .client import Client
 from .const import THF_API_KEY, THF_API_URL, THF_VERIFY_SSL, \
     THF_CONNECTION_TIMEOUT, THF_PROXIES, THF_CONNECTION_RETRIES, \
-    THF_USER_AGENT, DEFAULTS, __version__
-from .const import Language, Resolution, OpSystem, Capacity, Status
+    THF_USER_AGENT, DEFAULTS
+from .const import Status
 from .error import ApiError, ObjectNotFoundError
 
 
 class Polygon:
-    def __init__(self, api_key=None, api_url=None, verify_ssl=None,
-                       timeout=None, proxies=None, retries=None,
-                       user_agent=None):
+    def __init__(self, api_key=None, api_url=None, verify_ssl=None, timeout=None, proxies=None, retries=None, user_agent=None):
         """
         Create a Group-IB THF Polygon object.
 
@@ -62,14 +60,9 @@ class Polygon:
         """
         return self.client.ping()
 
-    def upload_file(self, file_obj, file_name=None, password=None,
-                          language=None, mp=None, timeout=None, 
-                          resolution=None, op_system=None,
-                          capacity=None, context_file=None, av=None,
-                          dns=None, vm_route=None, clock=None, priority=None,
-                          human=None, wl=None, arguments=None,
-                          fsmtp=None, no_validation=None,
-                          extract_strings=None, internet=None):
+    def upload_file(self, file_obj, file_name=None, password=None, language=None, mp=None, timeout=None, resolution=None,
+                    op_system=None, capacity=None, context_file=None, av=None, dns=None, vm_route=None, clock=None, priority=None,
+                    human=None, wl=None, arguments=None, fsmtp=None, no_validation=None, extract_strings=None, internet=None):
         """
             Detonate file in THF Polygon.
 
@@ -134,14 +127,9 @@ class Polygon:
             capacity=capacity
         )
     
-    def upload_url(self, url, password=None, language=None, mp=None, 
-                            timeout=None, resolution=None,
-                            op_system=None, capacity=None,
-                            context_file=None, av=None, dns=None,
-                            vm_route=None, clock=None, priority=None,
-                            human=None, wl=None, arguments=None,
-                            fsmtp=None, no_validation=None,
-                            extract_strings=None, internet=None):
+    def upload_url(self, url, password=None, language=None, mp=None, timeout=None, resolution=None, op_system=None, capacity=None,
+                   context_file=None, av=None, dns=None, vm_route=None, clock=None, priority=None, human=None, wl=None,
+                   arguments=None, fsmtp=None, no_validation=None, extract_strings=None, internet=None):
         """
             Detonate URL in THF Polygon.
 
@@ -217,10 +205,8 @@ class Polygon:
 
 
 class Analysis:
-    def __init__(self, client, context_file, password, language, mp, timeout,
-                        av, dns, vm_route, clock, priority, human,
-                        wl, arguments, fsmtp, no_validation, extract_strings,
-                        internet, resolution, op_system, capacity):
+    def __init__(self, client, context_file, password, language, mp, timeout, av, dns, vm_route, clock, priority, human,
+                 wl, arguments, fsmtp, no_validation, extract_strings, internet, resolution, op_system, capacity):
         """
             Create an Analysis object.
         """

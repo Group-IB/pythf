@@ -1,4 +1,3 @@
-import os
 from io import BytesIO
 from unittest import TestCase
 from pythf import Polygon
@@ -48,7 +47,7 @@ class TestPolygon(TestCase):
         analysis = self.polygon.upload_url(MALICIOUS_URL)
         analysis.get_info(extended=False)
         video = analysis.export_video()
-        self.assertEqual(video, EXPORTED_VIDEO)        
+        self.assertEqual(video, EXPORTED_VIDEO)
 
     def test_get_hash_reputation(self):
         r = self.polygon.get_hash_reputation(HASH_TYPE, HASH)
