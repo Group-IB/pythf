@@ -19,7 +19,7 @@ class PyTest(TestCommand):
 
 
 setup(name='pythf',
-      version='1.0.3',
+      version='1.0.4',
       author='Group-IB THF',
       author_email='tds@group-ib.com',
       license='MIT',
