@@ -236,6 +236,7 @@ class Analysis:
         self.verdict = None
         self.report = None
         self.error = None
+        self.report_url = None
         self._run()
 
     def _run(self):
@@ -248,6 +249,7 @@ class Analysis:
             self.status = Status.FAILED
             self.error = str(err)
             return {}
+        self.report_url = self.report_url or analysis_info.get('report_url')
         if "report" in analysis_info:
             self.status = Status.FINISHED
             self.verdict = analysis_info.get("verdict")
@@ -315,6 +317,8 @@ class Analysis:
             "status": self.status,
             "verdict": self.verdict
         }
+        if self.report_url:
+            info.update({"report_url": self.report_url})
         if self.status == Status.FAILED:
             info.update({
                 "error": self.error

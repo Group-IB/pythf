@@ -1,6 +1,6 @@
 # Python bindings for Group-IB THF REST API
 
-**Latest Version: 1.0.4**
+**Latest Version: 1.0.5**
 
 ## Description
 
@@ -60,6 +60,7 @@ info = analysis.get_info(extended=True)
 {
     "status": "IN PROGRESS" | "FINISHED" | "FAILED",
     "verdict": None | True | False,
+    "report_url": "https://..." # The report url (only for "FINISHED" analyzes)
     "error": "Some error"  # optional field only for "FAILED" status
 }
 ```

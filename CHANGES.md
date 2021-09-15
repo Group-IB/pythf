@@ -8,3 +8,6 @@
 - Trying to get filename from the pointer if possible
 - PR and Issue templates
 - New repo structure
+
+# Version 1.0.5
+- Field 'report_url' added to analysis info (get_info())

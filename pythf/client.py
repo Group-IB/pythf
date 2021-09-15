@@ -190,9 +190,11 @@ class Client:
         if not self._check_report_available(resp):
             return resp
         try:
+            report_url = self._get_url(Url.REPORT, analysis_id, resp)
+            resp.update({'report_url': report_url})
             report = self._http_request(
                 Method.GET,
-                self._get_url(Url.REPORT, analysis_id, resp))
+                report_url)
             resp.update({'report': report['data']})
         except Exception:
             pass

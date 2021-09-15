@@ -5,6 +5,8 @@ from pythf.const import Url
 FAKE_API_TOKEN = "FAKE_TOKEN"
 MALICIOUS_URL = "https://malicious-url.com"
 ANALYSIS_ID = 43747305
+COMMIT = "403a4300e5939d1d7fbfb90958aac5b413468ba3"
+REPORT_ID = "9064747b9dc499a5d05611c51650e2f6da2003ec_ind1611854608"
 
 ANALGIN_UPLOAD_ANSWER = {
     "data": {
@@ -96,7 +98,8 @@ ATTACH_ANSWER = {
 SHORT_INFO = {
     "id": ANALYSIS_ID,
     "status": "FINISHED",
-    "verdict": True
+    "verdict": True,
+    "report_url": "https://huntbox.group-ib.com/api/attaches/{}/{}/{}/polygon_report/".format(ANALYSIS_ID, COMMIT, REPORT_ID)
 }
 
 REPORT_ANSWER = {
