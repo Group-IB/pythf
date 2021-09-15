@@ -19,7 +19,7 @@ class PyTest(TestCommand):
 
 
 setup(name='pythf',
-      version='1.0.4',
+      version='1.0.5',
       author='Group-IB THF',
       author_email='tds@group-ib.com',
       license='MIT',
@@ -45,7 +45,6 @@ setup(name='pythf',
           'Topic :: Security',
           'License :: OSI Approved :: MIT License',
           'Programming Language :: Python :: 3',
-          'Programming Language :: Python :: 3.5',
           'Programming Language :: Python :: 3.6',
           'Programming Language :: Python :: 3.7',
           'Programming Language :: Python :: 3.8',

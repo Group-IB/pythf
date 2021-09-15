@@ -181,15 +181,18 @@ class Client:
         return resp
 
     def _get_url(self, url, analysis_id, file_info):
-        return url.format(analysis_id,
-                          file_info["analgin_result"]["commit"],
-                          file_info["analgin_result"]["reports"][0]["id"])
+        return url.format(
+            attach_id=analysis_id,
+            commit=file_info["analgin_result"]["commit"],
+            report_id=file_info["analgin_result"]["reports"][0]["id"]
+        )
 
     def get_analysis_info(self, analysis_id):
         resp = self.get_attach(analysis_id)
         if not self._check_report_available(resp):
             return resp
         try:
+            resp.update({'report_url': urljoin(self.base_url, self._get_url(Url.UI_REPORT, analysis_id, resp))})
             report = self._http_request(
                 Method.GET,
                 self._get_url(Url.REPORT, analysis_id, resp))

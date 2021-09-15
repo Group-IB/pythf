@@ -5,6 +5,8 @@ from pythf.const import Url
 FAKE_API_TOKEN = "FAKE_TOKEN"
 MALICIOUS_URL = "https://malicious-url.com"
 ANALYSIS_ID = 43747305
+COMMIT = "403a4300e5939d1d7fbfb90958aac5b413468ba3"
+REPORT_ID = "9064747b9dc499a5d05611c51650e2f6da2003ec_ind1611854608"
 
 ANALGIN_UPLOAD_ANSWER = {
     "data": {
@@ -96,7 +98,8 @@ ATTACH_ANSWER = {
 SHORT_INFO = {
     "id": ANALYSIS_ID,
     "status": "FINISHED",
-    "verdict": True
+    "verdict": True,
+    "report_url": "https://huntbox.group-ib.com/reports/{}/{}/attaches/{}/".format(COMMIT, REPORT_ID, ANALYSIS_ID)
 }
 
 REPORT_ANSWER = {
@@ -134,7 +137,7 @@ HASH_REPUTATION_ANSWER = {
 
 class MockedClient(Client):
     def __init__(self):
-        pass
+        self.base_url = "https://huntbox.group-ib.com"
 
     def _http_request(self, method, url_suffix, params=None, data=None, files=None, decode=True):
         FILE_INFO = ATTACH_ANSWER["data"]["results"][0]
