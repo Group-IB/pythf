@@ -60,11 +60,12 @@ info = analysis.get_info(extended=True)
 {
     "status": "IN PROGRESS" | "FINISHED" | "FAILED",
     "verdict": None | True | False,
-    "report_url": "https://..." # The report url (only for "FINISHED" analyzes)
+    "report_url": "https://...",
     "error": "Some error"  # optional field only for "FAILED" status
 }
 ```
 If the "verdict" is `True` then object is malicious.
+**Notice**: THF need some time to generate the report url. Until it happens, the response will not contain this field.
 
 3. You can get full report as a dictionary:
 ```
