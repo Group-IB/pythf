@@ -137,7 +137,7 @@ HASH_REPUTATION_ANSWER = {
 
 class MockedClient(Client):
     def __init__(self):
-        pass
+        self.base_url = "https://huntbox.group-ib.com"
 
     def _http_request(self, method, url_suffix, params=None, data=None, files=None, decode=True):
         FILE_INFO = ATTACH_ANSWER["data"]["results"][0]
