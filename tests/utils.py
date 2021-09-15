@@ -99,7 +99,7 @@ SHORT_INFO = {
     "id": ANALYSIS_ID,
     "status": "FINISHED",
     "verdict": True,
-    "report_url": "https://huntbox.group-ib.com/api/attaches/{}/{}/{}/polygon_report/".format(ANALYSIS_ID, COMMIT, REPORT_ID)
+    "report_url": "https://huntbox.group-ib.com/reports/{}/{}/attaches/{}/".format(COMMIT, REPORT_ID, ANALYSIS_ID)
 }
 
 REPORT_ANSWER = {
