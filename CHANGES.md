@@ -11,3 +11,6 @@
 
 # Version 1.0.5
 - Field 'report_url' added to analysis info (get_info())
+
+# Version 1.0.6
+- Added the ability to export the report to PDF
