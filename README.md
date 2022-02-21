@@ -1,6 +1,6 @@
 # Python bindings for Group-IB THF REST API
 
-**Latest Version: 6**
+**Latest Version: 1.0.6**
 
 ## Description
 
