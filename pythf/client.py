@@ -216,6 +216,12 @@ class Client:
             return self._export_artifact(Url.EXPORT_REPORT, analysis_id)
         except ObjectNotFoundError:
             raise ObjectNotFoundError("Report not found")
+    
+    def export_pdf_report(self, analysis_id):
+        try:
+            return self._export_artifact(Url.EXPORT_PDF_REPORT, analysis_id)
+        except ObjectNotFoundError:
+            raise ObjectNotFoundError("Report not found")
 
     def export_pcap(self, analysis_id):
         try:

@@ -341,6 +341,13 @@ class Analysis:
             If the report is not ready ObjectNotFoundError will be raised.
         """
         return self.client.export_report(self.id)
+
+    def export_pdf_report(self):
+        """
+            Export the detonation report as PDF
+            If the report is not ready ObjectNotFoundError will be raised.
+        """
+        return self.client.export_pdf_report(self.id)
     
     def export_pcap(self):
         """

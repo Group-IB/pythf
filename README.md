@@ -1,6 +1,6 @@
 # Python bindings for Group-IB THF REST API
 
-**Latest Version: 1.0.5**
+**Latest Version: 1.0.6**
 
 ## Description
 
@@ -74,6 +74,7 @@ report = analysis.get_report()
 4. There is a way to download some detonation artifacts and the report:
 ```
 archived_report = analysis.export_report()  # Export report as .tar.
+pdf_report = analysis.export_pdf_report()   # Export report as PDF
 pcap = analysis.export_pcap()               # Export all network activity as .pcap file.
 screen_video = analysis.export_video()      # Export the screen-video of the detonation process.
 ```
