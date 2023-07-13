@@ -1,4 +1,4 @@
-__version__ = "1.0.6"
+__version__ = "1.0.7"
 
 THF_API_KEY = "THF_API_KEY"
 THF_API_URL = "THF_API_URL"
@@ -57,14 +57,14 @@ class Url:
     ATTACH = ATTACHES + "?id={}"
 
     REPORT = ATTACHES + "{attach_id}/{commit}/{report_id}/polygon_report/"
-    UI_REPORT = "reports/{commit}/{report_id}/attaches/{attach_id}/"
+    UI_REPORT = "warehouse/{commit}/{report_id}/attaches/{attach_id}/"
 
     EXPORT_REPORT = ATTACHES + "{attach_id}/{commit}/{report_id}/polygon_report_export/"
     EXPORT_PDF_REPORT = EXPORT_REPORT + '?report_export_format=pdf'
     EXPORT_PCAP = ATTACHES + '{attach_id}/{commit}/{report_id}/dump.pcap/dump.pcap/polygon_report_file_download/'
     EXPORT_VIDEO = ATTACHES + '{attach_id}/{commit}/{report_id}/shots/video.webm/video.webm/polygon_report_file_download/'
     
-    HASH_REPUTATION = API + 'reports/check_hash/{}/{}/'
+    HASH_REPUTATION = API + 'warehouse/check_hash/{}/{}/'
 
 
 class Method:
