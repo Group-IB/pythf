@@ -14,3 +14,6 @@
 
 # Version 1.0.6
 - Added the ability to export the report to PDF
+
+# Version 1.0.7
+- Updated the deprecated URL for hashes checking
