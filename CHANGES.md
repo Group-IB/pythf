@@ -17,3 +17,6 @@
 
 # Version 1.0.7
 - Updated the deprecated URL for hashes checking
+
+# Version 1.0.8
+- Fix error "Object with ID='...' does not exist"

@@ -1,4 +1,4 @@
-__version__ = "1.0.7"
+__version__ = "1.0.8"
 
 THF_API_KEY = "THF_API_KEY"
 THF_API_URL = "THF_API_URL"
