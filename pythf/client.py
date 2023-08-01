@@ -188,7 +188,10 @@ class Client:
         )
 
     def get_analysis_info(self, analysis_id):
-        resp = self.get_attach(analysis_id)
+        try:
+            resp = self.get_attach(analysis_id)
+        except Exception:
+            return {}
         if not self._check_report_available(resp):
             return resp
         try:
